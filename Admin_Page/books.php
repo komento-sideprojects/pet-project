@@ -15,7 +15,7 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['user_role']) || $_SESSION[
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Books - Library MS</title>
-    <link rel="stylesheet" href="../Components/admin.css">
+    <link rel="stylesheet" href="../Components/admin.css?v=<?php echo time(); ?>">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 
@@ -50,8 +50,7 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['user_role']) || $_SESSION[
                 <h3>Books Management</h3>
                 <p>View, add, edit, and delete books.</p>
                 <br>
-                <button class="btn-primary"
-                    style="margin-top: 10px; background-color: var(--primary); color: white; padding: 8px 16px; border-radius: 8px; border: none; cursor: pointer;">
+                <button class="btn-primary" style="margin-top: 10px;">
                     <i class="ph-bold ph-plus"></i> Add New Book
                 </button>
             </div>

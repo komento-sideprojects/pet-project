@@ -15,7 +15,7 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['user_role']) || $_SESSION[
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Settings - Library MS</title>
-    <link rel="stylesheet" href="../Components/admin.css">
+    <link rel="stylesheet" href="../Components/admin.css?v=<?php echo time(); ?>">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 
