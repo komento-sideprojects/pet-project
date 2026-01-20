@@ -7,7 +7,6 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['user_role']) || $_SESSION[
     header('Location: ../login_page.php');
     exit();
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,22 +14,22 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['user_role']) || $_SESSION[
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard - Library MS</title>
+    <title>Issued Books - Library MS</title>
     <link rel="stylesheet" href="../Components/admin.css">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 
 <body>
 
-    <?php $current_page = 'dashboard'; ?>
+    <?php $current_page = 'issued_books'; ?>
     <?php include 'sidebar.php'; ?>
 
     <!-- Main Content -->
     <main class="main-content">
         <header class="top-bar">
             <div class="page-title">
-                <h2>Dashboard</h2>
-                <p>Welcome back, Admin!</p>
+                <h2>Issued Books</h2>
+                <p>Track borrowed books.</p>
             </div>
             <div class="top-actions">
                 <button class="action-btn" title="Notifications">
@@ -45,6 +44,13 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['user_role']) || $_SESSION[
         <!-- Dynamic Content Area -->
         <div class="content-container">
             <!-- Content will go here -->
+            <div
+                style="background: white; padding: 2rem; border-radius: 16px; box-shadow: var(--shadow-sm); text-align: center; color: var(--text-muted);">
+                <i class="ph-duotone ph-arrow-fat-lines-up"
+                    style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+                <h3>Circulation</h3>
+                <p>Manage book issues and returns.</p>
+            </div>
         </div>
     </main>
 
