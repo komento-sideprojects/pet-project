@@ -17,6 +17,24 @@ if ($conn->query($sql) === TRUE) {
     echo "Error creating table: " . $conn->error . "<br>";
 }
 
+// SQL to create books table
+$sqlBooks = "CREATE TABLE IF NOT EXISTS books (
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(100) NOT NULL,
+    author VARCHAR(100) NOT NULL,
+    isbn VARCHAR(20),
+    category VARCHAR(50),
+    quantity INT(6) DEFAULT 1,
+    available INT(6) DEFAULT 1,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)";
+
+if ($conn->query($sqlBooks) === TRUE) {
+    echo "Table 'books' checked/created successfully.<br>";
+} else {
+    echo "Error creating table books: " . $conn->error . "<br>";
+}
+
 // Check if role column exists (for handling existing table updates)
 $checkColumn = "SHOW COLUMNS FROM users LIKE 'role'";
 $result = $conn->query($checkColumn);
