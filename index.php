@@ -59,7 +59,7 @@
         <h1 class="landing-title">Library Portal</h1>
         <p class="landing-subtitle">Manage your books, students, and resources with elegance.</p>
 
-        <a href="login_page.html" class="btn-glass">
+        <a href="login_page.php" class="btn-glass">
             <span>Login to Portal</span>
             <i class="ph-bold ph-arrow-right"></i>
         </a>

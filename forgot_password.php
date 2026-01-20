@@ -35,7 +35,7 @@
             <button type="submit" class="btn-primary">Reset Password</button>
 
             <div style="margin-top: 1.5rem; text-align: center;">
-                <a href="login_page.html" class="forgot-password"
+                <a href="login_page.php" class="forgot-password"
                     style="display: inline-flex; align-items: center; gap: 0.5rem;">
                     <i class="ph-bold ph-arrow-left"></i> Back to log in
                 </a>
