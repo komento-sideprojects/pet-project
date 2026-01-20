@@ -19,22 +19,22 @@ $initials = strtoupper(substr($user_name, 0, 2));
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Dashboard - Library MS</title>
+    <title>Settings - Library MS</title>
     <link rel="stylesheet" href="../Components/admin.css">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 
 <body>
 
-    <?php $current_page = 'home'; ?>
+    <?php $current_page = 'settings'; ?>
     <?php include 'sidebar.php'; ?>
 
     <!-- Main Content -->
     <main class="main-content">
         <header class="top-bar">
             <div class="page-title">
-                <h2>Browse Library</h2>
-                <p>Find your next favorite book.</p>
+                <h2>Settings</h2>
+                <p>Manage your account preferences.</p>
             </div>
             <div class="top-actions">
                 <button class="action-btn" title="Notifications">
@@ -48,12 +48,11 @@ $initials = strtoupper(substr($user_name, 0, 2));
 
         <!-- Dynamic Content Area -->
         <div class="content-container">
-            <!-- Content will go here (e.g., Grid of books) -->
             <div
                 style="background: white; padding: 2rem; border-radius: 16px; box-shadow: var(--shadow-sm); text-align: center; color: var(--text-muted);">
-                <i class="ph-duotone ph-books" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
-                <h3>Library Catalog</h3>
-                <p>Books will appear here.</p>
+                <i class="ph-duotone ph-gear" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+                <h3>Account Settings</h3>
+                <p>Settings configuration not available yet.</p>
             </div>
         </div>
     </main>
