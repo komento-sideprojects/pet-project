@@ -14,15 +14,14 @@ include '../Database/db.php';
 if (isset($_POST['add_book'])) {
     $title = $_POST['title'];
     $author = $_POST['author'];
-    $isbn = $_POST['isbn'];
     $category = $_POST['category'];
     $quantity = (int) $_POST['quantity'];
 
     // Simple validation
     if (!empty($title) && !empty($author)) {
-        $stmt = $conn->prepare("INSERT INTO books (title, author, isbn, category, quantity, available) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt = $conn->prepare("INSERT INTO books (title, author, category, quantity, available) VALUES (?, ?, ?, ?, ?)");
         // Available starts same as quantity
-        $stmt->bind_param("ssssii", $title, $author, $isbn, $category, $quantity, $quantity);
+        $stmt->bind_param("sssii", $title, $author, $category, $quantity, $quantity);
 
         if ($stmt->execute()) {
             // Redirect to prevent form resubmission
@@ -123,9 +122,6 @@ $result = $conn->query($sql);
                                         <div style="font-weight: 500;">
                                             <?php echo htmlspecialchars($row['title']); ?>
                                         </div>
-                                        <div style="font-size: 0.8rem; color: var(--text-muted);">ISBN:
-                                            <?php echo htmlspecialchars($row['isbn']); ?>
-                                        </div>
                                     </td>
                                     <td style="padding: 1rem;">
                                         <?php echo htmlspecialchars($row['author']); ?>
@@ -199,11 +195,7 @@ $result = $conn->query($sql);
                     <input type="text" name="author" class="form-input" placeholder="e.g. F. Scott Fitzgerald" required>
                 </div>
 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                    <div class="form-group">
-                        <label class="form-label">ISBN</label>
-                        <input type="text" name="isbn" class="form-input" placeholder="Optional">
-                    </div>
+                <div style="display: grid; grid-template-columns: 1fr; gap: 1rem;">
                     <div class="form-group">
                         <label class="form-label">Quantity</label>
                         <input type="number" name="quantity" class="form-input" value="1" min="1" required>

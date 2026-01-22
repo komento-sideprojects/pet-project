@@ -33,8 +33,8 @@ $initials = strtoupper(substr($user_name, 0, 2));
     <main class="main-content">
         <header class="top-bar">
             <div class="page-title">
-                <h2>My Books</h2>
-                <p>Manage your borrowed books.</p>
+                <h2>Browse Books</h2>
+                <p>Discover available books in the library.</p>
             </div>
             <div class="top-actions">
                 <button class="action-btn" title="Notifications">
@@ -48,12 +48,49 @@ $initials = strtoupper(substr($user_name, 0, 2));
 
         <!-- Dynamic Content Area -->
         <div class="content-container">
-            <div
-                style="background: white; padding: 2rem; border-radius: 16px; box-shadow: var(--shadow-sm); text-align: center; color: var(--text-muted);">
-                <i class="ph-duotone ph-book-open" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
-                <h3>Borrowed Books</h3>
-                <p>You haven't borrowed any books yet.</p>
-            </div>
+            <?php
+            include '../Database/db.php';
+            $sql = "SELECT * FROM books ORDER BY created_at DESC";
+            $result = $conn->query($sql);
+            ?>
+
+            <?php if ($result->num_rows > 0): ?>
+                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;">
+                    <?php while($row = $result->fetch_assoc()): ?>
+                        <div style="background: white; border-radius: 16px; padding: 1.5rem; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; height: 100%;">
+                            <div style="flex: 1;">
+                                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
+                                    <span style="background: #f1f5f9; color: var(--text-muted); font-size: 0.75rem; padding: 4px 8px; border-radius: 4px; font-weight: 500;">
+                                        <?php echo htmlspecialchars($row['category']); ?>
+                                    </span>
+                                    <?php if($row['available'] > 0): ?>
+                                        <span style="color: #166534; font-size: 0.75rem; font-weight: 600;">Available</span>
+                                    <?php else: ?>
+                                        <span style="color: #991b1b; font-size: 0.75rem; font-weight: 600;">Out of Stock</span>
+                                    <?php endif; ?>
+                                </div>
+                                <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--text-color); margin-bottom: 0.25rem;">
+                                    <?php echo htmlspecialchars($row['title']); ?>
+                                </h3>
+                                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">
+                                    by <?php echo htmlspecialchars($row['author']); ?>
+                                </p>
+                            </div>
+                            <div style="margin-top: auto;">
+                                <button class="btn-primary" style="width: 100%; justify-content: center;" <?php echo ($row['available'] == 0) ? 'disabled style="background: #cbd5e1; cursor: not-allowed;"' : ''; ?>>
+                                    <?php echo ($row['available'] > 0) ? 'Borrow Book' : 'Unavailable'; ?>
+                                </button>
+                            </div>
+                        </div>
+                    <?php endwhile; ?>
+                </div>
+            <?php else: ?>
+                <div style="background: white; padding: 3rem; border-radius: 16px; box-shadow: var(--shadow-sm); text-align: center; color: var(--text-muted);">
+                    <i class="ph-duotone ph-books" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+                    <h3>Library is Empty</h3>
+                    <p>No books have been added yet.</p>
+                </div>
+            <?php endif; ?>
         </div>
     </main>
 
