@@ -15,11 +15,29 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // Create Admin
+        \App\Models\User::create([
+            'name' => 'Super Admin',
+            'email' => 'admin@library.com',
+            'password' => \Illuminate\Support\Facades\Hash::make('admin123'),
+            'role' => 'admin',
+        ]);
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        // Create Sample Books
+        \App\Models\Book::create([
+            'title' => 'The Great Gatsby',
+            'author' => 'F. Scott Fitzgerald',
+            'category' => 'Fiction',
+            'quantity' => 5,
+            'available' => 5,
+        ]);
+
+        \App\Models\Book::create([
+            'title' => 'Clean Code',
+            'author' => 'Robert C. Martin',
+            'category' => 'Technology',
+            'quantity' => 3,
+            'available' => 3,
         ]);
     }
 }
